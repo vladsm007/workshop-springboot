@@ -2,12 +2,12 @@ package com.vtorres.projetospring.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -26,6 +26,11 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @OneToMany(mappedBy = "client")
+    @Setter(AccessLevel.NONE)
+    private List<Order> orders = new ArrayList<>();
+
 
 
 }
