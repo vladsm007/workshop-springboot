@@ -1,5 +1,7 @@
 package com.vtorres.projetospring.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.vtorres.projetospring.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +24,11 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd 'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
+
+    private int orderSatus;
 
     @ManyToOne
     @JoinColumn(name = "client_id")

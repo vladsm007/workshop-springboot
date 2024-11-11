@@ -1,6 +1,7 @@
 package com.vtorres.projetospring.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     @Setter(AccessLevel.NONE)
     private List<Order> orders = new ArrayList<>();
