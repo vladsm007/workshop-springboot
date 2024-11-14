@@ -1,12 +1,11 @@
 package com.vtorres.projetospring.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,4 +20,8 @@ public class Category implements Serializable {
     @EqualsAndHashCode.Include // Inclui apenas o id no equals e hashCode
     private Long id;
     private String name;
+
+    @ManyToMany(mappedBy = "categories")
+    @Setter(AccessLevel.NONE)
+    private Set<Product> products = new HashSet<>();
 }

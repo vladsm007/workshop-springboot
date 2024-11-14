@@ -1,6 +1,8 @@
 package com.vtorres.projetospring.service;
 
+import com.vtorres.projetospring.entities.Product;
 import com.vtorres.projetospring.entities.User;
+import com.vtorres.projetospring.repositories.ProductRepository;
 import com.vtorres.projetospring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,23 +11,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServieImpl implements UserService{
+public class ProductServieImpl implements ProductService{
 
     @Autowired
-    private UserRepository userRepository;
+    private ProductRepository productRepository;
+
+
     @Override
-    public List<User> listarUsuarios() {
-        return userRepository.findAll();
+    public List<Product> listarProducts() {
+        return productRepository.findAll();
     }
 
     @Override
-    public User findById(Long id) {
-        Optional<User> obj = userRepository.findById(id);
+    public Product findById(Long id) {
+        Optional<Product> obj = productRepository.findById(id);
         return obj.get();
     }
 
     @Override
-    public User salvar(User user) {
+    public Product salvar(Product product) {
         return null;
     }
 

@@ -31,7 +31,7 @@ public class Order implements Serializable {
     private int orderSatus;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id"  )
     private User client;
 
 }
