@@ -3,13 +3,12 @@ package com.vtorres.projetospring.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vtorres.projetospring.entities.enums.OrderStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -28,10 +27,14 @@ public class Order implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd 'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
-    private int orderSatus;
+    private int orderStatus;
 
     @ManyToOne
-    @JoinColumn(name = "client_id"  )
+    @JoinColumn(name = "client_id")
     private User client;
+
+    @OneToMany(mappedBy = "id.order")
+    @Setter(AccessLevel.NONE)
+    private Set<OrderItem> items = new HashSet<>();
 
 }

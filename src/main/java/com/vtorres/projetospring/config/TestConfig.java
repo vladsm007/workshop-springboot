@@ -2,7 +2,9 @@ package com.vtorres.projetospring.config;
 
 
 import com.vtorres.projetospring.entities.Order;
+import com.vtorres.projetospring.entities.OrderItem;
 import com.vtorres.projetospring.entities.User;
+import com.vtorres.projetospring.repositories.OrderItemRepository;
 import com.vtorres.projetospring.repositories.OrderRepository;
 import com.vtorres.projetospring.repositories.UserRepository;
 import org.aspectj.bridge.context.CompilationAndWeavingContext;
@@ -23,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception {

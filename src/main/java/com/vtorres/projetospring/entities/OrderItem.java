@@ -1,5 +1,6 @@
 package com.vtorres.projetospring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vtorres.projetospring.entities.pk.OrderItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -14,12 +15,12 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Entity
 @Table(name = "tb_order_item")
-class OrderItem implements Serializable {
+public class OrderItem implements Serializable {
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
     private Double price;
@@ -34,7 +35,7 @@ class OrderItem implements Serializable {
         this.quantity = quantity;
         this .price = price;
     }
-
+    @JsonIgnore
     public Order getOrder() {
         return id.getOrder();
     }
